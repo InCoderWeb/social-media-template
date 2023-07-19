@@ -2,26 +2,326 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+::-webkit-scrollbar {
+  @apply w-[6px] h-[6px];
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-500 rounded-full;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-gray-100;
 }
+
+.inNavbar {
+  @apply bg-white w-full h-[4rem] flex justify-between items-center px-4 shadow-lg;
+}
+
+.inNavbar .inLogo {
+  @apply text-2xl font-semibold text-gray-700 cursor-pointer hover:text-primary transition-colors duration-300;
+}
+
+.inSearch {
+  width: calc(100% - 50%);
+  @apply max-w-[35rem] hidden sm:block;
+}
+
+.inSearchWrapper {
+  @apply bg-gray-50 w-full border-[2px] px-2 py-2 flex items-center rounded-full transition-colors duration-300 ease-in-out;
+}
+
+.inSearch.inSearchFocused .inSearchWrapper {
+  @apply bg-gray-200;
+}
+
+.inSearchWrapper .inIcon {
+  @apply text-xl mx-1;
+}
+
+.inSearch.inSearchFocused .inSearchIcon svg {
+  @apply text-gray-600;
+}
+
+.inSearchCloseBtn {
+  @apply hidden cursor-pointer;
+}
+
+.inSearchCloseBtn svg {
+  @apply cursor-pointer hover:text-primary;
+}
+
+.inSearchCloseBtn.inSearchCloseBtnActive {
+  @apply block;
+}
+
+.inSearchWrapper input {
+  @apply bg-transparent focus:outline-none w-full h-full text-gray-600;
+}
+
+.inIcon {
+  @apply text-gray-600;
+}
+
+.inBtn {
+  @apply bg-primary px-6 py-2 rounded-full text-white hover:opacity-100 opacity-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-within:ring-offset-2;
+}
+
+.inNavRightOptions {
+  @apply flex items-center;
+}
+
+.userProfile {
+  @apply relative;
+}
+
+.userProfile .userProfileDropdown {
+  @apply absolute top-[3.5rem] right-0 shadow-xl shadow-gray-200 bg-white rounded-xl overflow-hidden sm:w-[20rem] w-[290px];
+}
+
+.profileWrapper {
+  --tw-shadow: 0 0px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+  @apply flex items-center m-3 rounded-lg py-2 shadow-lg;
+}
+
+.profileWrapper .profileData {
+  @apply text-gray-800 flex flex-col;
+}
+
+.profileWrapper .profileData .name {
+  @apply font-semibold;
+}
+
+.profileWrapper .profileData span {
+  @apply text-[.7rem] cursor-pointer hover:text-primary;
+}
+
+.userImage img,
+.profileWrapper img {
+  @apply rounded-full w-10 mx-4 cursor-pointer;
+}
+
+.linksWrapper {
+  @apply my-4;
+}
+
+.linksWrapper .link {
+  @apply flex items-center justify-between py-2 mx-2 hover:bg-gray-100 rounded-lg cursor-pointer;
+}
+
+.linksWrapper .link .leftSide {
+  @apply flex items-center;
+}
+
+.linksWrapper .link .leftSide .icon {
+  @apply mx-3 mr-2 bg-gray-300 p-2 text-[1.5rem] rounded-full;
+}
+
+.linksWrapper .link .actionIcon {
+  @apply mx-2 text-xl;
+}
+
+.linksWrapper .link .icon,
+.linksWrapper .link .actionIcon {
+  @apply text-gray-600 text-lg;
+}
+
+.inNavRightOptions .inBtn {
+  @apply hidden sm:block;
+}
+
+.mobileSearchBtn {
+  @apply h-[2.5rem] w-[2.5rem] bg-gray-200 text-gray-800 cursor-pointer sm:hidden rounded-full grid place-items-center text-[1.5rem];
+}
+
+.mainContainer {
+  @apply flex justify-between w-full mt-5 3xl:max-w-[60%] 3xl:mx-auto;
+}
+
+/* --------------------------- Left Section --------------------------- */
+
+.leftSection {
+  @apply mx-3 ml-5 w-full max-w-[15rem] min-w-[15rem] hidden md:block overflow-y-auto max-h-screen sticky top-0;
+}
+
+.leftSection .userProfileWidget {
+  @apply flex items-center bg-white w-full py-3 px-3 rounded-xl shadow-md;
+}
+
+.leftSection .userProfileWidget img {
+  @apply w-[3rem];
+}
+
+.leftSection .userProfileWidget .userDetails,
+.rightSection .requestWidget .requestProfile .userDetails {
+  @apply ml-3;
+}
+
+.leftSection .userProfileWidget .userDetails .name,
+.rightSection .requestWidget .requestProfile .userDetails .name {
+  @apply text-base text-gray-700 font-bold hover:text-primary hover:cursor-pointer;
+}
+
+.leftSection .userProfileWidget .userDetails .username,
+.rightSection .requestWidget .requestProfile .userDetails .username {
+  @apply text-xs text-gray-600;
+}
+
+.profileImage img {
+  @apply rounded-full w-10;
+}
+
+.inSidebar {
+  @apply bg-white mt-5 rounded-xl shadow-md overflow-hidden;
+}
+
+.inSidebar .link {
+  @apply my-2 flex px-4 items-center py-3 hover:bg-gray-50 cursor-pointer;
+}
+
+.inSidebar .link svg {
+  @apply mr-5 ml-1 text-xl text-gray-600;
+}
+
+.inSidebar .link:hover :is(svg, h3) {
+  @apply text-primary;
+}
+
+.inSidebar .link h3 {
+  @apply text-base text-gray-600 font-semibold;
+}
+
+.sidebarCreateBtn {
+  @apply grid place-items-center my-4 cursor-pointer;
+}
+
+/* --------------------------- Left Section End --------------------------- */
+
+/* --------------------------- Right Section --------------------------- */
+
+.rightSection {
+  @apply mx-5 w-full max-w-[16rem] hidden md:block xl:max-w-[20rem] min-w-[16rem];
+}
+
+.rightSection .requestWidget {
+  @apply bg-white w-full rounded-xl py-2 shadow-md;
+}
+
+.rightSection .requestWidget > h3 {
+  @apply my-1 font-semibold text-gray-800 ml-3;
+}
+
+.rightSection .requestWidget .requestProfile {
+  @apply my-3 scale-95;
+}
+
+.rightSection .requestWidget .requestProfile .userDetails .name {
+  @apply !text-gray-600 !font-semibold;
+}
+
+.rightSection .requestWidget .requestProfile img {
+  @apply w-[3rem];
+}
+
+.rightSection .requestWidget .requestProfile .details {
+  @apply flex ml-2;
+}
+
+.rightSection .requestWidget .requestProfile .actions {
+  @apply flex justify-start my-3;
+}
+
+.rightSection .requestWidget .requestProfile .actions .actionBtn {
+  @apply mx-2 w-[6rem] text-sm first:bg-primary first:opacity-90 first:hover:opacity-100  first:text-white last:bg-gray-200 py-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-within:ring-offset-2;
+}
+
+/* --------------------------- Right Section End --------------------------- */
+
+/* --------------------------- Main Section --------------------------- */
+
+.mainSection {
+  @apply w-full md:max-w-mainSection 0.5xl:max-w-[35rem] ml-2 !mx-auto;
+}
+
+.storiesWidget::-webkit-scrollbar {
+  @apply h-[0px];
+}
+
+.storiesWrapper {
+  @apply w-full flex justify-center items-center mx-auto;
+}
+
+.storiesWidget {
+  @apply w-full h-[8rem] px-2 py-2 flex overflow-x-auto mx-auto justify-start;
+}
+
+.storiesWidget .story {
+  @apply w-[5rem] min-w-[5rem] h-full rounded-xl overflow-hidden relative mx-2;
+}
+
+.storiesWidget .story .overlay {
+  @apply h-full w-full absolute top-0 left-0 z-[1] bg-gradient-to-b to-[#1f2937ad] from-transparent;
+}
+
+.storiesWidget .story img {
+  @apply w-full h-full object-cover absolute;
+}
+
+.storiesWidget .story .profileImage {
+  @apply w-[1.5rem] h-[1.5rem] object-cover absolute top-[.4rem] left-[.4rem] rounded-full ring-2 ring-primary p-[.07rem];
+}
+
+.storiesWidget .story .name {
+  @apply w-full text-[.7rem] text-white absolute bottom-[.4rem] left-[.4rem] z-[1];
+}
+
+.createPostWidget {
+  @apply h-auto my-3 mx-4 bg-white rounded-full relative;
+}
+
+.createPostWidget.active {
+  @apply shadow-lg rounded-xl;
+}
+
+.createPostWidget .otherOptions {
+  @apply hidden;
+}
+
+.createPostWidget.active .otherOptions {
+  @apply flex justify-evenly flex-wrap;
+}
+
+.createPostWidget.active .otherOptions .option {
+  @apply flex items-center my-4 cursor-pointer;
+}
+
+.createPostWidget.active .otherOptions .option svg {
+  @apply mr-2 text-xl text-primary;
+}
+
+.createPostWidget.active .otherOptions .option span {
+  @apply mr-2 text-sm hover:text-primary;
+}
+
+.createPostWidget .createInput {
+  @apply w-full flex h-auto px-3 py-2 justify-between;
+}
+/* 
+.createPostWidget .createInput::before{
+  content: "";
+  @apply absolute top-0 left-0 w-full bg-primary-300 h-full z-[-1] rounded-full transition-all duration-200 ease-in-out
+}
+
+.createPostWidget.active .createInput::before{
+  @apply blur
+} */
+
+.createPostWidget .createInput img {
+  @apply w-[2.5rem] h-[2.5rem] rounded-full;
+}
+
+.createPostWidget .createInput input {
+  @apply bg-transparent h-auto w-full mx-2 focus:outline-none;
+}
+
+/* --------------------------- Main Section End --------------------------- */
