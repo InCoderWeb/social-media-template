@@ -86,7 +86,7 @@ const Navbar = () => {
               searchedUser.map((user, index) => {
                 if (user.error) {
                   return (
-                    <div className="noUserFound">
+                    <div className="noUserFound" key={index}>
                       <FaFaceFrown />
                       <h3>Sorry {user.error}</h3>
                     </div>
