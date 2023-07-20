@@ -14,7 +14,8 @@ module.exports = {
         primary: {...colors.blue, DEFAULT: colors.blue[600]}
       },
       screens: {
-        '0.5xl': '1025px',
+        'mobile':  "960px",
+        '0.5xl': '1125px',
         '3xl': '2560px',
       },
       maxWidth: {

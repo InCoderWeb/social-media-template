@@ -153,7 +153,7 @@ body {
 /* --------------------------- Left Section --------------------------- */
 
 .leftSection {
-  @apply mx-3 ml-5 w-full max-w-[15rem] min-w-[15rem] hidden md:block overflow-y-auto max-h-screen sticky top-[1rem];
+  @apply mx-3 ml-5 w-full max-w-[15rem] min-w-[15rem] hidden mobile:block overflow-y-auto max-h-screen sticky top-[1rem];
 }
 
 .leftSection .userProfileWidget {
@@ -212,7 +212,7 @@ body {
 /* --------------------------- Right Section --------------------------- */
 
 .rightSection {
-  @apply mx-5 w-full max-w-[16rem] hidden md:block xl:max-w-[20rem] min-w-[16rem] overflow-y-auto max-h-screen sticky top-[1rem];
+  @apply mx-5 w-full max-w-[16rem] hidden mobile:block xl:max-w-[20rem] min-w-[16rem] overflow-y-auto max-h-screen sticky top-[1rem];
 }
 
 .rightSection .requestWidget {
@@ -252,7 +252,7 @@ body {
 /* --------------------------- Main Section --------------------------- */
 
 .mainSection {
-  @apply w-full md:max-w-mainSection 0.5xl:max-w-[35rem] ml-2 !mx-auto;
+  @apply w-full mobile:max-w-mainSection 0.5xl:max-w-[35rem] ml-2 !mx-auto;
 }
 
 .storiesWidget::-webkit-scrollbar {
