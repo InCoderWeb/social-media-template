@@ -64,7 +64,7 @@ body {
 }
 
 .inBtn {
-  @apply bg-primary px-6 py-2 rounded-full text-white hover:opacity-100 opacity-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-within:ring-offset-2;
+  @apply bg-primary px-6 py-2 cursor-pointer rounded-full text-white hover:opacity-100 opacity-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-within:ring-offset-2;
 }
 
 .inNavRightOptions {
@@ -141,7 +141,7 @@ body {
 /* --------------------------- Left Section --------------------------- */
 
 .leftSection {
-  @apply mx-3 ml-5 w-full max-w-[15rem] min-w-[15rem] hidden md:block overflow-y-auto max-h-screen sticky top-0;
+  @apply mx-3 ml-5 w-full max-w-[15rem] min-w-[15rem] hidden md:block overflow-y-auto max-h-screen sticky top-[1rem];
 }
 
 .leftSection .userProfileWidget {
@@ -200,7 +200,7 @@ body {
 /* --------------------------- Right Section --------------------------- */
 
 .rightSection {
-  @apply mx-5 w-full max-w-[16rem] hidden md:block xl:max-w-[20rem] min-w-[16rem];
+  @apply mx-5 w-full max-w-[16rem] hidden md:block xl:max-w-[20rem] min-w-[16rem] overflow-y-auto max-h-screen sticky top-[1rem];
 }
 
 .rightSection .requestWidget {
@@ -306,15 +306,6 @@ body {
 .createPostWidget .createInput {
   @apply w-full flex h-auto px-3 py-2 justify-between;
 }
-/* 
-.createPostWidget .createInput::before{
-  content: "";
-  @apply absolute top-0 left-0 w-full bg-primary-300 h-full z-[-1] rounded-full transition-all duration-200 ease-in-out
-}
-
-.createPostWidget.active .createInput::before{
-  @apply blur
-} */
 
 .createPostWidget .createInput img {
   @apply w-[2.5rem] h-[2.5rem] rounded-full;
@@ -325,3 +316,63 @@ body {
 }
 
 /* --------------------------- Main Section End --------------------------- */
+
+/* --------------------------- Post --------------------------- */
+
+.postWrapper {
+  @apply bg-white rounded-xl overflow-hidden shadow-xl mx-4 px-4 my-6;
+}
+
+.postWrapper .header {
+  @apply flex justify-between items-center my-3;
+}
+
+.postWrapper .header .left {
+  @apply flex items-center;
+}
+
+.postWrapper .header .right .option>svg {
+  @apply text-gray-600 text-xl cursor-pointer
+}
+
+.postWrapper .header .left .userDetails{
+  @apply ml-3
+}
+
+.postWrapper .header .left .userDetails .name {
+  @apply font-semibold text-gray-600 hover:text-primary cursor-pointer
+}
+
+.postWrapper .header .left .userDetails .feeling {
+  @apply text-xs text-gray-600
+}
+
+.postWrapper .header .left .profileImg {
+  @apply object-cover w-[2.8rem] h-[2.8rem] rounded-full;
+}
+
+.mainPostContent{
+  @apply flex justify-center
+}
+
+.mainPostContent .postImage {
+  @apply max-w-full max-h-[20rem] my-4 rounded-xl w-full h-full object-cover
+}
+
+.postFooter{
+  @apply flex justify-between items-center my-3
+}
+
+.postFooter .postActions {
+  @apply flex justify-between items-center w-full mb-2
+}
+
+.postFooter .postActions svg {
+  @apply mx-2 text-gray-600 text-2xl hover:text-gray-800 cursor-pointer h-[1.4rem] w-[1.4rem]
+}
+
+.postFooter .postActions .left {
+  @apply flex items-center
+}
+
+/* --------------------------- Post End --------------------------- */

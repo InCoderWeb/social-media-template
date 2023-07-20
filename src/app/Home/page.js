@@ -10,7 +10,9 @@ import {
 } from "react-icons/fa";
 import { MdSettings, MdInsertPhoto, MdEmojiEmotions } from "react-icons/md";
 import { BsFillCameraVideoFill } from "react-icons/bs";
+import { useClickOutside } from "@mantine/hooks";
 import userData from "@/app/UserData";
+import Post from "@/app/components/Post";
 
 const links = [
   {
@@ -44,7 +46,8 @@ const links = [
 ];
 
 const Page = () => {
-    const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const ref = useClickOutside(() => setIsFocused(false));
   return (
     <>
       <div className="mainContainer">
@@ -70,7 +73,9 @@ const Page = () => {
             })}
           </div>
 
-          <div className="inBtn sidebarCreateBtn">Create Post</div>
+          <label htmlFor="createNewPost" className="inBtn sidebarCreateBtn">
+            Create Post
+          </label>
         </div>
 
         <div className="mainSection">
@@ -92,27 +97,38 @@ const Page = () => {
               })}
             </div>
           </div>
-          <div className={`createPostWidget ${isFocused ? "active" : ""}`}>
+          <div
+            ref={ref}
+            className={`createPostWidget ${isFocused ? "active" : ""}`}
+          >
             <div className="createInput">
-                <img src="/assets/image/avatar_default.jpg" alt="" />
-                <input type="text" placeholder="What's on your mind, Jhon Doe?" onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} />
-                <button className="inBtn">Post</button>
+              <img src="/assets/image/avatar_default.jpg" alt="" />
+              <input
+                type="text"
+                placeholder="What's on your mind, Jhon Doe?"
+                id="createNewPost"
+                onFocus={() => setIsFocused(true)}
+              />
+              <button className="inBtn">Post</button>
             </div>
             <div className="otherOptions">
-                <div className="option">
-                    <BsFillCameraVideoFill />
-                    <span>Go Live</span>
-                </div>
-                <div className="option">
-                    <MdInsertPhoto />
-                    <span>Photo/Video</span>
-                </div>
-                <div className="option">
-                    <MdEmojiEmotions />
-                    <span>Feeling/Activity</span>
-                </div>
+              <div className="option">
+                <BsFillCameraVideoFill />
+                <span>Go Live</span>
+              </div>
+              <div className="option">
+                <MdInsertPhoto />
+                <span>Photo/Video</span>
+              </div>
+              <div className="option">
+                <MdEmojiEmotions />
+                <span>Feeling/Activity</span>
+              </div>
             </div>
           </div>
+          {userData.map((user, index) => {
+            return <Post key={index} userData={user} />
+          })}
         </div>
 
         <div className="rightSection">

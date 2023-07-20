@@ -51,7 +51,7 @@ const Navbar = () => {
           <div className="mobileSearchBtn">
             <MdSearch />
           </div>
-          <button className="inBtn">Create</button>
+          <label className="inBtn" htmlFor="createNewPost">Create</label>
           <div className="userProfile">
             <div
               className="userImage"
