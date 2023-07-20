@@ -400,3 +400,39 @@ body {
 }
 
 /* --------------------------- Post End --------------------------- */
+
+.mobileSearchPanel{
+  @apply h-screen w-full bg-gray-100 fixed top-0 left-0 z-[99999]
+}
+
+.mobileSearchPanel .closeBtn {
+  @apply h-[2rem] w-full grid place-items-center text-[1.5rem] my-4 text-gray-600 cursor-pointer
+}
+
+.inMobileSearch{
+  @apply flex items-center bg-white justify-between h-[3rem] mx-4 px-3 rounded-full shadow-lg
+}
+
+.inMobileSearch svg {
+  @apply mx-3 text-[1.8rem]
+}
+
+.inMobileSearch input{
+  @apply w-full h-full focus:outline-none
+}
+
+.mobileSearchResult{
+  @apply my-5 mx-4
+}
+
+.mobileSearchResult .mobileSearchItem {
+  @apply flex items-center px-3 py-2 cursor-pointer bg-white rounded-full mx-1 my-2 shadow-md
+}
+
+.mobileSearchResult .mobileSearchItem .profileImage {
+  @apply mr-3
+}
+
+.mobileSearchResult .mobileSearchItem .profileImage img {
+  @apply w-[2.5rem] h-[2.5rem] object-cover
+}

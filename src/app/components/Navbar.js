@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { MdSearch, MdClose, MdSettings } from "react-icons/md";
 import { FaAngleRight } from "react-icons/fa";
-import { FaFaceFrown } from "react-icons/fa6";
+import { FaAngleDown, FaFaceFrown } from "react-icons/fa6";
 import { RiQuestionFill } from "react-icons/ri";
 import userData from "@/app/UserData";
 import { motion } from "framer-motion";
@@ -15,6 +15,7 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [ProfileMenu, setProfileMenu] = useState(false);
   const [searchedUser, setSearchedUser] = useState(userData);
+  const [searchPanel, setSearchPanel] = useState(false);
 
   const searchUsers = (value) => {
     let searchedUser = userData.filter((user) => {
@@ -109,7 +110,7 @@ const Navbar = () => {
           </motion.div>
         </div>
         <div className="inNavRightOptions">
-          <div className="mobileSearchBtn">
+          <div className="mobileSearchBtn" onClick={() => setSearchPanel(true)}>
             <MdSearch />
           </div>
           <label className="inBtn" htmlFor="createNewPost">
@@ -174,6 +175,73 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      <motion.div
+        className="mobileSearchPanel"
+        animate={{
+          y: searchPanel ? 0 : "100vh",
+          pointerEvents: searchPanel ? "auto" : "none",
+          transition: {
+            bounce: 0.23,
+            type: "spring",
+          },
+        }}
+      >
+        <div className="closeBtn" onClick={() => setSearchPanel(false)}>
+          <FaAngleDown />
+        </div>
+
+        <div className="inMobileSearch">
+          <div className="mobileSearchIcon">
+            <MdSearch className="inIcon" />
+          </div>
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchValue}
+            onKeyUp={(e) => searchUsers(e.target.value)}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+          {searchValue.length >= 1 && (
+            <MdClose
+              className="inIcon cursor-pointer"
+              onClick={() => {
+                setSearchValue("");
+                setSearchedUser(userData);
+              }}
+            />
+          )}
+        </div>
+
+        <div className="mobileSearchResult">
+          {searchedUser.map((user, index) => {
+            if (user.error) {
+              return (
+                <div className="noUserFound" key={index}>
+                  <FaFaceFrown />
+                  <h3>Sorry {user.error}</h3>
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  className="mobileSearchItem"
+                  key={index}
+                  onClick={() => {
+                    setSearchValue(user.name);
+                    setSearchPanel(false);
+                  }}
+                >
+                  <div className="profileImage">
+                    <img src={`${user.profilePic}`} alt="" />
+                  </div>
+                  <h3>{user.name}</h3>
+                </div>
+              );
+            }
+          })}
+        </div>
+      </motion.div>
     </>
   );
 };
