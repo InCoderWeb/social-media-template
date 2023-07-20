@@ -24,7 +24,19 @@ body {
 
 .inSearch {
   width: calc(100% - 50%);
-  @apply max-w-[35rem] hidden sm:block;
+  @apply max-w-[35rem] hidden sm:block relative;
+}
+
+.searchResult{
+  @apply w-full absolute left-0 top-[3.5rem] shadow-xl rounded-xl bg-white z-[99999] py-4
+}
+
+.searchResult .searchResultItem{
+  @apply py-2 flex items-center hover:bg-gray-100 cursor-pointer
+}
+
+.searchResult .searchResultItem h3{
+  @apply text-lg font-medium text-gray-600
 }
 
 .inSearchWrapper {
@@ -98,7 +110,7 @@ body {
 
 .userImage img,
 .profileWrapper img {
-  @apply rounded-full w-10 mx-4 cursor-pointer;
+  @apply rounded-full w-10 h-10 mx-4 cursor-pointer object-cover;
 }
 
 .linksWrapper {
@@ -256,7 +268,7 @@ body {
 }
 
 .storiesWidget .story {
-  @apply w-[5rem] min-w-[5rem] h-full rounded-xl overflow-hidden relative mx-2;
+  @apply w-[5rem] min-w-[5rem] h-full cursor-pointer rounded-xl overflow-hidden relative mx-2;
 }
 
 .storiesWidget .story .overlay {
@@ -373,6 +385,18 @@ body {
 
 .postFooter .postActions .left {
   @apply flex items-center
+}
+
+.noUserFound{
+  @apply flex justify-center items-center flex-col
+}
+
+.noUserFound svg{
+  @apply text-[5rem] text-gray-600
+}
+
+.noUserFound h3{
+  @apply text-[1.5rem] mt-2 text-gray-600
 }
 
 /* --------------------------- Post End --------------------------- */

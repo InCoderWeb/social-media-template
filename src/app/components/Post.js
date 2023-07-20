@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEllipsisH } from "react-icons/fa";
-import { CiShare2 } from "react-icons/ci";
 import {
   HiOutlineHeart,
   HiOutlineChatBubbleOvalLeftEllipsis,
   HiOutlineBookmark,
 } from "react-icons/hi2";
 import { HiOutlineShare } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 const Post = ({userData}) => {
+    const [open, setOpen] = useState(false);
   return (
     <>
       <div className="postWrapper">
@@ -31,7 +32,7 @@ const Post = ({userData}) => {
           </div>
         </div>
         <div className="mainPostContent">
-          <img src={userData.postImg} alt="" className="postImage" />
+          <motion.img src={userData.postImg} alt="" className="postImage" onClick={() => setOpen(!open)} animate={{ scale: open ? 2 : 1 }} />
         </div>
         <div className="postFooter">
           <div className="postActions">

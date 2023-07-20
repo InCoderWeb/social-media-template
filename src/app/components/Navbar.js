@@ -3,13 +3,27 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { MdSearch, MdClose, MdSettings } from "react-icons/md";
 import { FaAngleRight } from "react-icons/fa";
+import { FaFaceFrown } from "react-icons/fa6";
 import { RiQuestionFill } from "react-icons/ri";
+import userData from "@/app/UserData";
 import { motion } from "framer-motion";
+import { useClickOutside } from "@mantine/hooks";
 
 const Navbar = () => {
   const [isFocused, setIsFocused] = useState(false);
+  const ref = useClickOutside(() => setIsFocused(false));
   const [searchValue, setSearchValue] = useState("");
   const [ProfileMenu, setProfileMenu] = useState(false);
+  const [searchedUser, setSearchedUser] = useState(userData);
+
+  const searchUsers = (value) => {
+    let searchedUser = userData.filter((user) => {
+      return user.name.toLowerCase().includes(value.toLowerCase());
+    });
+    setSearchedUser(
+      searchedUser.length === 0 ? [{ error: "User Not Found" }] : searchedUser
+    );
+  };
 
   useEffect(() => {
     window.addEventListener("click", (e) => {
@@ -25,7 +39,10 @@ const Navbar = () => {
         <Link href={"/"} className="inLogo">
           InSocial
         </Link>
-        <div className={`inSearch ${isFocused ? "inSearchFocused" : ""}`}>
+        <div
+          ref={ref}
+          className={`inSearch ${isFocused ? "inSearchFocused" : ""}`}
+        >
           <div className="inSearchWrapper">
             <div className="inSearchIcon">
               <MdSearch className="inIcon" />
@@ -34,24 +51,70 @@ const Navbar = () => {
               type="text"
               onClick={() => setIsFocused(true)}
               placeholder="Search"
-              onBlur={() => setIsFocused(false)}
               value={searchValue}
+              onFocus={() => setIsFocused(true)}
               onChange={(e) => setSearchValue(e.target.value)}
+              onKeyUp={(e) => searchUsers(e.target.value)}
             />
             <div
               className={`inSearchCloseBtn ${
                 searchValue.length >= 1 ? "inSearchCloseBtnActive" : ""
               }`}
             >
-              <MdClose className="inIcon" onClick={() => setSearchValue("")} />
+              <MdClose
+                className="inIcon"
+                onClick={() => {
+                  setSearchValue("");
+                  setIsFocused(false);
+                  setTimeout(() => {
+                    setSearchedUser(userData);
+                  }, 300);
+                }}
+              />
             </div>
           </div>
+
+          <motion.div
+            className="searchResult"
+            animate={{
+              y: isFocused ? 0 : 30,
+              opacity: isFocused ? 1 : 0,
+              pointerEvents: isFocused ? "auto" : "none",
+            }}
+          >
+            {isFocused &&
+              searchedUser.map((user, index) => {
+                if (user.error) {
+                  return (
+                    <div className="noUserFound">
+                      <FaFaceFrown />
+                      <h3>Sorry {user.error}</h3>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div
+                      key={index}
+                      className="searchResultItem"
+                      onClick={() => setSearchValue(user.name)}
+                    >
+                      <div className="userImage">
+                        <img src={`${user.profilePic}`} alt="" />
+                      </div>
+                      <h3>{user.name}</h3>
+                    </div>
+                  );
+                }
+              })}
+          </motion.div>
         </div>
         <div className="inNavRightOptions">
           <div className="mobileSearchBtn">
             <MdSearch />
           </div>
-          <label className="inBtn" htmlFor="createNewPost">Create</label>
+          <label className="inBtn" htmlFor="createNewPost">
+            Create
+          </label>
           <div className="userProfile">
             <div
               className="userImage"
@@ -69,7 +132,7 @@ const Navbar = () => {
                 y: !ProfileMenu ? -30 : [0, 30, 10],
                 opacity: ProfileMenu ? 1 : 0,
                 pointerEvents: ProfileMenu ? "auto" : "none",
-                zIndex: 999999
+                zIndex: 999999,
               }}
               transition={{ duration: 0.48 }}
             >
