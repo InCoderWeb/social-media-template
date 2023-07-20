@@ -178,6 +178,7 @@ const Navbar = () => {
 
       <motion.div
         className="mobileSearchPanel"
+        initial={{ y: "100vh", pointerEvents: "none" }}
         animate={{
           y: searchPanel ? 0 : "100vh",
           pointerEvents: searchPanel ? "auto" : "none",
