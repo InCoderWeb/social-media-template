@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {...colors.blue, DEFAULT: colors.blue[600]}
+        primary: {...colors.rose, DEFAULT: colors.rose[600]}
       },
       screens: {
         'mobile':  "960px",

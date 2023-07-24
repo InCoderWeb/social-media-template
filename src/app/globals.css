@@ -27,16 +27,16 @@ body {
   @apply max-w-[35rem] hidden sm:block relative;
 }
 
-.searchResult{
-  @apply w-full absolute left-0 top-[3.5rem] shadow-xl rounded-xl bg-white z-[99999] py-4
+.searchResult {
+  @apply w-full absolute left-0 top-[3.5rem] shadow-xl rounded-xl bg-white z-[99999] py-4;
 }
 
-.searchResult .searchResultItem{
-  @apply py-2 flex items-center hover:bg-gray-100 cursor-pointer
+.searchResult .searchResultItem {
+  @apply py-2 flex items-center hover:bg-gray-100 cursor-pointer;
 }
 
-.searchResult .searchResultItem h3{
-  @apply text-lg font-medium text-gray-600
+.searchResult .searchResultItem h3 {
+  @apply text-lg font-medium text-gray-600;
 }
 
 .inSearchWrapper {
@@ -216,7 +216,7 @@ body {
 }
 
 .rightSection .requestWidget {
-  @apply bg-white w-full rounded-xl py-2 shadow-md;
+  @apply bg-transparent w-full rounded-xl py-2;
 }
 
 .rightSection .requestWidget > h3 {
@@ -224,7 +224,7 @@ body {
 }
 
 .rightSection .requestWidget .requestProfile {
-  @apply my-3 scale-95;
+  @apply my-3 scale-95 bg-white shadow-md p-1 rounded-xl pt-5;
 }
 
 .rightSection .requestWidget .requestProfile .userDetails .name {
@@ -232,7 +232,7 @@ body {
 }
 
 .rightSection .requestWidget .requestProfile img {
-  @apply w-[3rem];
+  @apply w-[3rem] h-[3rem] rounded-full;
 }
 
 .rightSection .requestWidget .requestProfile .details {
@@ -244,7 +244,7 @@ body {
 }
 
 .rightSection .requestWidget .requestProfile .actions .actionBtn {
-  @apply mx-2 w-[6rem] text-sm first:bg-primary first:opacity-90 first:hover:opacity-100  first:text-white last:bg-gray-200 py-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-within:ring-offset-2;
+  @apply mx-2 w-[6rem] text-sm first:bg-primary first:opacity-90 first:hover:opacity-100  first:text-white last:bg-gray-200 py-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-within:ring-offset-2 last:hover:bg-rose-600 last:hover:text-white;
 }
 
 /* --------------------------- Right Section End --------------------------- */
@@ -343,96 +343,96 @@ body {
   @apply flex items-center;
 }
 
-.postWrapper .header .right .option>svg {
-  @apply text-gray-600 text-xl cursor-pointer
+.postWrapper .header .right .option > svg {
+  @apply text-gray-600 text-xl cursor-pointer;
 }
 
-.postWrapper .header .left .userDetails{
-  @apply ml-3
+.postWrapper .header .left .userDetails {
+  @apply ml-3;
 }
 
 .postWrapper .header .left .userDetails .name {
-  @apply font-semibold text-gray-600 hover:text-primary cursor-pointer
+  @apply font-semibold text-gray-600 hover:text-primary cursor-pointer;
 }
 
 .postWrapper .header .left .userDetails .feeling {
-  @apply text-xs text-gray-600
+  @apply text-xs text-gray-600;
 }
 
 .postWrapper .header .left .profileImg {
   @apply object-cover w-[2.8rem] h-[2.8rem] rounded-full;
 }
 
-.mainPostContent{
-  @apply flex justify-center
+.mainPostContent {
+  @apply flex justify-center;
 }
 
 .mainPostContent .postImage {
-  @apply max-w-full max-h-[20rem] my-4 rounded-xl w-full h-full object-cover
+  @apply max-w-full max-h-[20rem] my-4 rounded-xl w-full h-full object-cover;
 }
 
-.postFooter{
-  @apply flex justify-between items-center my-3
+.postFooter {
+  @apply flex justify-between items-center my-3;
 }
 
 .postFooter .postActions {
-  @apply flex justify-between items-center w-full mb-2
+  @apply flex justify-between items-center w-full mb-2;
 }
 
 .postFooter .postActions svg {
-  @apply mx-2 text-gray-600 text-2xl hover:text-gray-800 cursor-pointer h-[1.4rem] w-[1.4rem]
+  @apply mx-2 text-gray-600 text-2xl hover:text-gray-800 cursor-pointer h-[1.4rem] w-[1.4rem];
 }
 
 .postFooter .postActions .left {
-  @apply flex items-center
+  @apply flex items-center;
 }
 
-.noUserFound{
-  @apply flex justify-center items-center flex-col
+.noUserFound {
+  @apply flex justify-center items-center flex-col;
 }
 
-.noUserFound svg{
-  @apply text-[5rem] text-gray-600
+.noUserFound svg {
+  @apply text-[5rem] text-gray-600;
 }
 
-.noUserFound h3{
-  @apply text-[1.5rem] mt-2 text-gray-600
+.noUserFound h3 {
+  @apply text-[1.5rem] mt-2 text-gray-600;
 }
 
 /* --------------------------- Post End --------------------------- */
 
-.mobileSearchPanel{
-  @apply h-screen w-full bg-gray-100 fixed top-0 left-0 z-[99999]
+.mobileSearchPanel {
+  @apply h-screen w-full bg-gray-100 fixed top-0 left-0 z-[99999];
 }
 
 .mobileSearchPanel .closeBtn {
-  @apply h-[2rem] w-full grid place-items-center text-[1.5rem] my-4 text-gray-600 cursor-pointer
+  @apply h-[2rem] w-full grid place-items-center text-[1.5rem] my-4 text-gray-600 cursor-pointer;
 }
 
-.inMobileSearch{
-  @apply flex items-center bg-white justify-between h-[3rem] mx-4 px-3 rounded-full shadow-lg
+.inMobileSearch {
+  @apply flex items-center bg-white justify-between h-[3rem] mx-4 px-3 rounded-full shadow-lg;
 }
 
 .inMobileSearch svg {
-  @apply mx-3 text-[1.8rem]
+  @apply mx-3 text-[1.8rem];
 }
 
-.inMobileSearch input{
-  @apply w-full h-full focus:outline-none
+.inMobileSearch input {
+  @apply w-full h-full focus:outline-none;
 }
 
-.mobileSearchResult{
-  @apply my-5 mx-4
+.mobileSearchResult {
+  @apply my-5 mx-4;
 }
 
 .mobileSearchResult .mobileSearchItem {
-  @apply flex items-center px-3 py-2 cursor-pointer bg-white rounded-full mx-1 my-2 shadow-md
+  @apply flex items-center px-3 py-2 cursor-pointer bg-white rounded-full mx-1 my-2 shadow-md;
 }
 
 .mobileSearchResult .mobileSearchItem .profileImage {
-  @apply mr-3
+  @apply mr-3;
 }
 
 .mobileSearchResult .mobileSearchItem .profileImage img {
-  @apply w-[2.5rem] h-[2.5rem] object-cover
+  @apply w-[2.5rem] h-[2.5rem] object-cover;
 }

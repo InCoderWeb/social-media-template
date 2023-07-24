@@ -77,6 +77,7 @@ const Navbar = () => {
 
           <motion.div
             className="searchResult"
+            initial={{ y: 30, opacity: 0, pointerEvents: "none" }}
             animate={{
               y: isFocused ? 0 : 30,
               opacity: isFocused ? 1 : 0,
